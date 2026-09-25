@@ -9,20 +9,22 @@ class CategorySeeder extends Seeder
 {
     public $categories = [
         [
-            "id" => 1,
-            "name" => "Cafe",
-            "description" => "",
+            'id' => 1,
+            'name' => 'Cafe',
+            'description' => '',
         ],
         [
-            "id" => 2,
-            "name" => "Chicken",
-            "description" => "",
+            'id' => 2,
+            'name' => 'Chicken',
+            'description' => '',
         ],
     ];
 
-    private function getCategories() {
+    private function getCategories()
+    {
         return $this->categories;
     }
+
     /**
      * Run the database seeds.
      */

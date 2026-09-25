@@ -1,5 +1,11 @@
 # **Laravel Framework Lab - Coffee Shop**
 
+## **NOTES**
+### **Automatically Fix Formattings with PINT**
+```shell
+.\vendor\bin\pint --test
+.\vendor\bin\pint
+```
 
 ## **Sections**
 ### **Section 1 - Working with Database**

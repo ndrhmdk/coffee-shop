@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('display_image_url');
             $table->foreignId('category_id')->nullable();
             $table->foreign('category_id')
-                    ->references('id')
-                    ->on('categories')
-                    ->constrained()
-                    ->cascadeOnUpdate()
-                    ->nullOnDelete();
+                ->references('id')
+                ->on('categories')
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->timestamps();
         });
     }
