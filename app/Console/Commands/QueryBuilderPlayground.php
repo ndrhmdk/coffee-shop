@@ -32,10 +32,10 @@ class QueryBuilderPlayground extends Command
             dump('Category name: '.$category->name);
             dump('Total products: '.count($category->products));
 
-            foreach($category->products as $product) {
+            foreach ($category->products as $product) {
                 dump('--- Product name: '.$product->name);
             }
-            
+
             dump('--------------------------------------------');
         }
     }

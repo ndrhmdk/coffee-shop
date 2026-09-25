@@ -11,13 +11,16 @@ class Product extends Model
 
     public const DEFAULT_CURRENCY = "VND";
     public const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1509042239860-f550ce710b93";
-    public function category() {
+    public function category() 
+    {
         return $this->belongsTo(Category::class);
     }
-    public function getFormattedPriceAttribute() {
+    public function getFormattedPriceAttribute() 
+    {
         return number_format($this->price) . ' ' . $this->currency;
     }
-    public function getFormattedTotalAmount($quantity = 1) {
+    public function getFormattedTotalAmount($quantity = 1) 
+    {
         return number_format($this->price * $quantity) . ' ' . $this->currency;
     }
 }
