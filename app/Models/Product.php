@@ -13,6 +13,11 @@ class Product extends Model
 
     public const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1509042239860-f550ce710b93';
 
+    protected $fillable = [
+        'name', 'description', 'price', 'currency',
+        'display_image_url', 'category_id',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
