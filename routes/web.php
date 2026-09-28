@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('home');
-
 Route::get('/test-error', function () {
     throw new Exception('This is a test exception.');
 });
@@ -29,3 +27,8 @@ Route::get('/test-log-telescope', function () {
 Route::get('/test-exception', function () {
     throw new Exception('Section 3 Telescope exception test.');
 });
+
+Route::get(
+    '/',
+    [App\Http\Controllers\HomepageController::class, 'index']
+)->name('home');
