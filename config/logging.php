@@ -90,6 +90,16 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'discord' => [
+            'driver' => 'slack',
+            'url' => env('LOG_DISCORD_WEBHOOK_URL'),
+            'username' => 'Laravel Error Logger',
+            'level' => env('LOG_DISCORD_LEVEL', 'error'),
+            'attachment' => false,
+            'context' => false,
+            'replace_placeholders' => true,
+        ],
+
         'papertrail' => [
             'driver' => 'monolog',
             'level' => env('LOG_LEVEL', 'debug'),

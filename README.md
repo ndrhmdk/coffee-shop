@@ -80,3 +80,54 @@ flowchart TD
     D --> E[("Database")]
     E --> F["JSON Response"]
 ```
+
+## **Section 3 - Error Handling & Logging**
+```mermaid
+flowchart TD
+    Config["LOG_CHANNEL=stack"] --> Stack["stack"]
+
+    Stack --> Daily["daily"]
+    Stack --> DiscordChan["discord"]
+
+    Daily -->|DEBUG+| Storage["storage/logs/laravel-*.log"]
+    DiscordChan -->|ERROR+| DiscordApp["Discord"]
+```
+```mermaid
+flowchart TD
+    Error["Something goes wrong"] --> Th["Throwable"]
+    Th --> Handler["Laravel exception handling"]
+
+    Handler --> Report["report"]
+    Handler --> Render["render"]
+
+    Report --> Logs["logs / monitoring"]
+    Render --> Resp["HTTP response"]
+```
+
+The logging architecture
+```mermaid
+flowchart TD
+    Log["Log event"] --> Level["Level"]
+    Log --> Channel["Channel"]
+    Log --> Stack["Stack"]
+
+    Level --> Sev["severity"]
+    Channel --> Dest["destination"]
+    Stack --> MultiDest["multiple destinations"]
+```
+
+Telescope:
+```mermaid
+flowchart TD
+    App["Application activity"] --> T["Telescope"]
+
+    T --> Req["Requests"]
+    T --> Exc["Exceptions"]
+    T --> Log["Logs"]
+    T --> Que["Queries"]
+    T --> Job["Jobs"]
+    T --> Mail["Mail"]
+    T --> Notif["Notifications"]
+    T --> Cache["Cache"]
+    T --> More["... and more"]
+```

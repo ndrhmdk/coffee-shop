@@ -16,7 +16,7 @@ class CategoryController extends Controller
     {
         $query = Category::query()
             ->when(request('search'), function (Builder $query, $search) {
-                return $query->where('name', 'like', '%'.$search);
+                return $query->where('name', 'like', '%'.$search.'%');
             });
 
         return $query->simplePaginate();

@@ -19,7 +19,7 @@ class ProductController extends Controller
                 $query->with(explode(',', $with));
             })
             ->when(request('search'), function (Builder $query, $search) {
-                return $query->where('name', 'like', '%'.$search);
+                return $query->where('name', 'like', '%'.$search.'%');
             })
             // homework
             ->when(request('sort'), function (Builder $query, $sort) {
