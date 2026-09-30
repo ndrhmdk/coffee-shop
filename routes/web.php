@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,5 @@ Route::get('/test-exception', function () {
 
 Route::get(
     '/',
-    [App\Http\Controllers\HomepageController::class, 'index']
+    [HomepageController::class, 'index']
 )->name('home');

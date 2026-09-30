@@ -65,6 +65,13 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'user_actions' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/user-actions.log'),
+            'level' => 'info',
+            'replace_placeholders' => true,
+        ],
+
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),
