@@ -1,14 +1,12 @@
 <?php
 
-// use Illuminate\Http\Request;
-use App\Http\Controllers\API\CategoryController;
-use App\Http\Controllers\API\ProductController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('v1')->group(function () {
-    Route::apiResource('categories', CategoryController::class);
-    Route::apiResource('products', ProductController::class);
-    Route::get('/test-error', function () {
-        throw new Exception('This is an API test exception.');
+Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
     });
+    Route::apiResource('categories', \App\Http\Controllers\API\CategoryController::class);
+    Route::apiResource('products', \App\Http\Controllers\API\ProductController::class);
 });
