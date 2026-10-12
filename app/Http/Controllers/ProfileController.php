@@ -11,7 +11,7 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit (Request $request)
+    public function edit(Request $request)
     {
         return view('profile.edit', ['user' => $request->user()]);
     }
@@ -27,6 +27,7 @@ class ProfileController extends Controller
         $user->delete();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return Redirect::to('/');
     }
 }

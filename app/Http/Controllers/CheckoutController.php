@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use Illuminate\Http\Request;
-use App\Services\CartService;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Http\RedirectResponse;
 use App\Events\OrderCreated;
-
+use App\Models\Order;
+use App\Services\CartService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 class CheckoutController extends Controller
 {
-    public function index (CartService $cart) {
-        return view("checkout.index", ["cart" => $cart->getCart()]);
+    public function index(CartService $cart)
+    {
+        return view('checkout.index', ['cart' => $cart->getCart()]);
     }
 
     public function store(Request $request, CartService $cart): RedirectResponse
@@ -32,13 +32,13 @@ class CheckoutController extends Controller
         );
 
         OrderCreated::dispatch($order);
-        
-        return redirect(URL::signedRoute('orders.complete', [ 'order' => $order->id ]));
+
+        return redirect(URL::signedRoute('orders.complete', ['order' => $order->id]));
     }
 
     public function show(Request $request, Order $order)
     {
-        if (!$request->hasValidSignature()) {
+        if (! $request->hasValidSignature()) {
             abort(401);
         }
 

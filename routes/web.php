@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\ApiTokenManagerController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\OrderCompleteController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OrderCompleteController;
 
 Route::get('/test-error', function () {
     throw new Exception('This is a test exception.');
@@ -38,11 +41,11 @@ Route::get(
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
 Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
-Route::get('/checkout/{order}', [CheckoutController::class,'show'])->name('checkout.show');
+Route::get('/checkout/{order}', [CheckoutController::class, 'show'])->name('checkout.show');
 Route::get('/order-complete/{order}', OrderCompleteController::class)->name('orders.complete');
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-    Route::delete('/profile', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/api-tokens', [App\Http\Controllers\ApiTokenManagerController::class, 'index'])->name('apiTokens.index');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/api-tokens', [ApiTokenManagerController::class, 'index'])->name('apiTokens.index');
 });

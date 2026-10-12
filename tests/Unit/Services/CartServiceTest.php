@@ -2,14 +2,14 @@
 
 namespace Tests\Unit\Services;
 
-use Tests\TestCase;
 use App\Models\Cart;
+use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\CartItem;
 use App\Services\CartService;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Session;
+use Tests\TestCase;
 
 class CartServiceTest extends TestCase
 {
@@ -20,7 +20,7 @@ class CartServiceTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->cart_service = new CartService();
+        $this->cart_service = new CartService;
     }
 
     public function test_get_valid_cart_instance(): void

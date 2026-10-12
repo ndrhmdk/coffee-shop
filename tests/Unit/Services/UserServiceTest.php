@@ -16,13 +16,14 @@ class UserServiceTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->user_service = new UserService();
+        $this->user_service = new UserService;
     }
 
     private function storeRandomUserId()
     {
         $dummy_user_id = fake()->uuid;
         Session::put('user_id', $dummy_user_id);
+
         return $dummy_user_id;
     }
 
@@ -30,7 +31,7 @@ class UserServiceTest extends TestCase
     {
         $john_user_id = $this->storeRandomUserId();
         $this->assertSame($john_user_id, $this->user_service->getUserIdFromSession());
-        
+
         $alice_user_id = $this->storeRandomUserId();
         $this->assertSame($alice_user_id, $this->user_service->getUserIdFromSession());
     }
@@ -52,5 +53,4 @@ class UserServiceTest extends TestCase
         Session::flush();
         $this->assertNotSame($john_user_id, $this->user_service->getUserIdFromSession());
     }
-
 }

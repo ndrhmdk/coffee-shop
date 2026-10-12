@@ -24,7 +24,7 @@ class OrderFactory extends Factory
             'full_name' => fake()->name(),
             'phone_number' => fake()->phoneNumber(),
             'email' => fake()->email(),
-            'shipping_address' => fake()->streetAddress() . ', ' . fake()->city(),
+            'shipping_address' => fake()->streetAddress().', '.fake()->city(),
             'notes' => fake()->text(100),
         ];
     }

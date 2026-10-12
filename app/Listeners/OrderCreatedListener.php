@@ -13,7 +13,7 @@ class OrderCreatedListener
      */
     public function handle(OrderCreated $event): void
     {
-        Notification::route('mail', [ $event->order->email => $event->order->full_name ])
+        Notification::route('mail', [$event->order->email => $event->order->full_name])
             ->notify(new OrderCreatedNotification($event->order));
     }
 }
